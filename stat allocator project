@@ -1,0 +1,256 @@
+import random
+from prettytable import PrettyTable
+
+""" FUNCTIONALITY FOR CODE
+The stat_process() function controls the functionality for the main stats.
+1. DONE: Ask the user whether or not they want to modify the stat.
+2. DONE: Ask the user to enter an integer value by which to modify the stat.
+3. DONE: Displays stat allocation done on the stat.
+4. DONE: Displays error messages if user input is incorrect. 
+5. DONE: Add functionality that lets user allocate stats evenly or randomly.
+6. WIP: Add functionality that lets user restart this function if they enter a wrong input to any of the prompts.
+7. WIP: Add functionality that displays an error if user tries to allocate points into another stat if they've met
+        their maximum stat value.
+        Allow user to reset their stat allocations (sets every stat to 0 and begins the process again).
+8. WIP: Add functionality that displays the remaining stat points that a user can use to allocate to their stats.
+        Have this be displayed at the start and end of stat allocations.
+"""
+
+
+# Variables.
+stat_strength = [0, "Strength"]
+stat_dexterity = [0, "Dexterity"]
+stat_charisma = [0, "Charisma"]
+stat_intellect = [0, "Intellect"]
+stat_spirit = [0, "Spirit"]
+number_of_stats = 5
+total_stat_points = 50
+random_stat_value = random.randrange(0, total_stat_points)
+stat_points_used = 0
+
+
+# Displays a simple chart with stat allocations for each main stat and the True/False values for each secondary stat.
+
+
+def create_stat_chart():
+
+    stat_chart = PrettyTable()
+    stat_chart.field_names = ["Main Stats", "Main Stat Values", "Personality", "Personality Values"]
+    stat_chart.add_rows(
+        [
+            ["Strength", stat_strength[0], "Chivalrous", ""],
+            ["Dexterity", stat_dexterity[0], "Clandestine", ""],
+            ["Charisma", stat_charisma[0], "Cordial", ""],
+            ["Intellect", stat_intellect[0], "Cerebral", ""],
+            ["Spirit", stat_spirit[0], "Charitable", ""]
+        ]
+    )
+    stat_chart.align["Main Stats"] = 'l'
+    stat_chart.align["Personality"] = "l"
+    print(stat_chart)
+
+
+def stat_instructions():
+    print(f"""
+Stat Selection    
+1 = Strength
+2 = Dexterity
+3 = Charisma
+4 = Intellect
+5 = Spirit
+Stat Allocation
+A = Manual allocation
+B = Even allocation
+C = Random allocation
+D = No allocation
+""")
+
+
+def calculate_stat_point_expenditure():
+    stat_points_used = stat_strength[0] + stat_dexterity[0] + stat_charisma[0] + stat_intellect[0] + stat_spirit[0]
+    print(stat_points_used)
+
+
+def stat_process():
+    strength_stat_process()
+    dexterity_stat_process()
+    charisma_stat_process()
+    intellect_stat_process()
+    spirit_stat_process()
+
+
+def strength_stat_process():
+
+    user_stat_choice = int(input("What stat do you want to modify? Enter a number between 1 and 5: \n"))
+
+    if user_stat_choice == 1:
+        print(f"You have selected the {stat_strength[1]} stat.")
+        user_stat_allocation = input("How do you want to allocate points to this stat? "
+                                     "Enter a letter between A and D: \n").lower()
+        if user_stat_allocation == "a":
+            change_strength = int(input(f"How many points would you like to put into {stat_strength[1]}? "
+                                        "\nEnter a number between 0 and 50: "))
+            if 0 <= change_strength <= 50:
+                stat_strength[0] = change_strength
+                print(f"You have entered {change_strength} point(s) into {stat_strength[1]}.")
+                print(f"{stat_strength[1]} has {change_strength} point(s). \n")
+            else:
+                print("You have made an incorrect entry.")
+        elif user_stat_allocation == "b":
+            even_stat_allocation = int(total_stat_points / number_of_stats)
+            stat_strength[0] = even_stat_allocation
+            print(f"{even_stat_allocation} point(s) has been added to the {stat_strength[1]} stat.")
+            print(f"{stat_strength[1]} has {stat_strength[0]} point(s). \n")
+        elif user_stat_allocation == "c":
+            random_stat_value = random.randrange(0, total_stat_points)
+            stat_strength[0] = random_stat_value
+            print(f"{random_stat_value} point(s) has been added to the {stat_strength[1]} stat.")
+            print(f"{stat_strength[1]} has {stat_strength[0]} point(s) in it. \n")
+        elif user_stat_allocation == "d":
+            print(f"No changes will be done on the {stat_strength[1]} stat. \n")
+        else:
+            print("You have made an incorrect entry.")
+
+
+def dexterity_stat_process():
+
+    user_stat_choice = int(input("What stat do you want to modify? Enter a number between 1 and 5: \n"))
+
+    if user_stat_choice == 2:
+        print(f"You have selected the {stat_dexterity[1]} stat.")
+        user_stat_allocation = input("How do you want to allocate points to this stat? "
+                                     "Enter a letter between A and D: \n").lower()
+        if user_stat_allocation == "a":
+            change_dexterity = int(input(f"How many points would you like to put into {stat_dexterity[1]}? "
+                                        "\nEnter a number between 0 and 50: "))
+            if 0 <= change_dexterity <= 50:
+                stat_dexterity[0] = change_dexterity
+                print(f"You have entered {change_dexterity} point(s) into {stat_dexterity[1]}.")
+                print(f"{stat_dexterity[1]} has {change_dexterity} point(s). \n")
+            else:
+                print("You have made an incorrect entry.")
+        elif user_stat_allocation == "b":
+            even_stat_allocation = int(total_stat_points / number_of_stats)
+            stat_dexterity[0] = even_stat_allocation
+            print(f"{even_stat_allocation} point(s) has been added to the {stat_dexterity[1]} stat.")
+            print(f"{stat_dexterity[1]} has {stat_dexterity[0]} point(s). \n")
+        elif user_stat_allocation == "c":
+            random_stat_value = random.randrange(0, total_stat_points)
+            stat_dexterity[0] = random_stat_value
+            print(f"{random_stat_value} point(s) has been added to the {stat_dexterity[1]} stat.")
+            print(f"{stat_dexterity[1]} has {stat_dexterity[0]} point(s) in it. \n")
+        elif user_stat_allocation == "d":
+            print(f"No changes will be done on the {stat_dexterity[1]} stat. \n")
+        else:
+            print("You have made an incorrect entry.")
+
+
+def charisma_stat_process():
+    user_stat_choice = int(input("What stat do you want to modify? Enter a number between 1 and 5: \n"))
+
+    if user_stat_choice == 3:
+        print(f"You have selected the {stat_charisma[1]} stat.")
+        user_stat_allocation = input("How do you want to allocate points to this stat? "
+                                     "Enter a letter between A and D: \n").lower()
+        if user_stat_allocation == "a":
+            change_charisma = int(input(f"How many points would you like to put into {stat_charisma[1]}? "
+                                        "\nEnter a number between 0 and 50: "))
+            if 0 <= change_charisma <= 50:
+                stat_charisma[0] = change_charisma
+                print(f"You have entered {change_charisma} point(s) into {stat_charisma[1]}.")
+                print(f"{stat_charisma[1]} has {change_charisma} point(s). \n")
+            else:
+                print("You have made an incorrect entry.")
+        elif user_stat_allocation == "b":
+            even_stat_allocation = int(total_stat_points / number_of_stats)
+            stat_charisma[0] = even_stat_allocation
+            print(f"{even_stat_allocation} point(s) has been added to the {stat_charisma[1]} stat.")
+            print(f"{stat_charisma[1]} has {stat_charisma[0]} point(s). \n")
+        elif user_stat_allocation == "c":
+            random_stat_value = random.randrange(0, total_stat_points)
+            stat_charisma[0] = random_stat_value
+            print(f"{random_stat_value} point(s) has been added to the {stat_charisma[1]} stat.")
+            print(f"{stat_charisma[1]} has {stat_charisma[0]} point(s) in it. \n")
+        elif user_stat_allocation == "d":
+            print(f"No changes will be done on the {stat_charisma[1]} stat. \n")
+        else:
+            print("You have made an incorrect entry.")
+
+
+def intellect_stat_process():
+    user_stat_choice = int(input("What stat do you want to modify? Enter a number between 1 and 5: \n"))
+
+    if user_stat_choice == 4:
+        print(f"You have selected the {stat_intellect[1]} stat.")
+        user_stat_allocation = input("How do you want to allocate points to this stat? "
+                                     "Enter a letter between A and D: \n").lower()
+        if user_stat_allocation == "a":
+            change_intellect = int(input(f"How many points would you like to put into {stat_intellect[1]}? "
+                                        "\nEnter a number between 0 and 50: "))
+            if 0 <= change_intellect <= 50:
+                stat_intellect[0] = change_intellect
+                print(f"You have entered {change_intellect} point(s) into {stat_intellect[1]}.")
+                print(f"{stat_intellect[1]} has {change_intellect} point(s). \n")
+            else:
+                print("You have made an incorrect entry.")
+        elif user_stat_allocation == "b":
+            even_stat_allocation = int(total_stat_points / number_of_stats)
+            stat_intellect[0] = even_stat_allocation
+            print(f"{even_stat_allocation} point(s) has been added to the {stat_intellect[1]} stat.")
+            print(f"{stat_intellect[1]} has {stat_intellect[0]} point(s). \n")
+        elif user_stat_allocation == "c":
+            random_stat_value = random.randrange(0, total_stat_points)
+            stat_intellect[0] = random_stat_value
+            print(f"{random_stat_value} point(s) has been added to the {stat_intellect[1]} stat.")
+            print(f"{stat_intellect[1]} has {stat_intellect[0]} point(s) in it. \n")
+        elif user_stat_allocation == "d":
+            print(f"No changes will be done on the {stat_intellect[1]} stat. \n")
+        else:
+            print("You have made an incorrect entry.")
+
+
+def spirit_stat_process():
+    user_stat_choice = int(input("What stat do you want to modify? Enter a number between 1 and 5: \n"))
+
+    if user_stat_choice == 5:
+        print(f"You have selected the {stat_spirit[1]} stat.")
+        user_stat_allocation = input("How do you want to allocate points to this stat? "
+                                     "Enter a letter between A and D: \n").lower()
+        if user_stat_allocation == "a":
+            change_spirit = int(input(f"How many points would you like to put into {stat_spirit[1]}? "
+                                        "\nEnter a number between 0 and 50: "))
+            if 0 <= change_spirit <= 50:
+                stat_spirit[0] = change_spirit
+                print(f"You have entered {change_spirit} point(s) into {stat_spirit[1]}.")
+                print(f"{stat_spirit[1]} has {change_spirit} point(s). \n")
+            else:
+                print("You have made an incorrect entry.")
+        elif user_stat_allocation == "b":
+            even_stat_allocation = int(total_stat_points / number_of_stats)
+            stat_spirit[0] = even_stat_allocation
+            print(f"{even_stat_allocation} point(s) has been added to the {stat_spirit[1]} stat.")
+            print(f"{stat_spirit[1]} has {stat_spirit[0]} point(s). \n")
+        elif user_stat_allocation == "c":
+            random_stat_value = random.randrange(0, total_stat_points)
+            stat_spirit[0] = random_stat_value
+            print(f"{random_stat_value} point(s) has been added to the {stat_spirit[1]} stat.")
+            print(f"{stat_spirit[1]} has {stat_spirit[0]} point(s) in it. \n")
+        elif user_stat_allocation == "d":
+            print(f"No changes will be done on the {stat_spirit[1]} stat. \n")
+        else:
+            print("You have made an incorrect entry.")
+
+
+# stat_instructions()
+# stat_process()
+# calculate_stat_point_expenditure()
+# secondary_stat_prompts()
+create_stat_chart()
+
+
+
+
+
+
+
+
