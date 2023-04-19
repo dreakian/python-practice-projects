@@ -29,24 +29,24 @@ else:
 def compare_choices():
     
     if player_choice != computer_choice:
-        if player_choice == options[0] and computer_choice == options[1] and game_rounds > 0:
+        if player_choice == options[0] and computer_choice == options[1]:
             print(f"\nYou lost. The computer's {computer_choice} beats your {player_choice}.")
        
-        elif player_choice == options[0] and computer_choice == options[2] and game_rounds > 0:
+        elif player_choice == options[0] and computer_choice == options[2]:
             print(f"\nYou won! Your {player_choice} beats the computer's {computer_choice}!")
          
             
-        elif player_choice == options[1] and computer_choice == options[2] and game_rounds > 0:
+        elif player_choice == options[1] and computer_choice == options[2]:
             print(f"\nYou lost. The computer's {computer_choice} beats your {player_choice}.")
       
-        elif player_choice == options[1] and computer_choice == options[0] and game_rounds > 0:
+        elif player_choice == options[1] and computer_choice == options[0]:
             print(f"\nYou won! Your {player_choice} beats the computer's {computer_choice}!")
             
             
-        elif player_choice == options[2] and computer_choice == options[0] and game_rounds > 0:
+        elif player_choice == options[2] and computer_choice == options[0]:
             print(f"\nYou lost. The computer's {computer_choice} beats your {player_choice}.")
             
-        elif player_choice == options[2] and computer_choice == options[1] and game_rounds > 0:
+        elif player_choice == options[2] and computer_choice == options[1]:
             print(f"\nYou won! Your {player_choice} beats the computer's {computer_choice}!")        
             
     else:
