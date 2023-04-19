@@ -70,3 +70,32 @@ while game_flag == True:
         
         
         
+        #
+        
+        # the code below doesn't work
+
+        #
+        
+        
+    #player_score = player_points
+    
+    #computer_score = computer_points
+    
+    #if player_score > computer_score:
+        #print(f"""\nCongrats, you won!
+        #Your points: {player_score}
+        #Computer's points: {computer_score}
+        #Difference: {player_score - computer_score} """)
+        
+    #elif player_score < computer_score:
+        #print(f"""\nBetter luck next time, you lost.
+        #Your points: {player_score}
+        #Computer's points: {computer_score}
+        #Difference: {computer_score - player_score} """)
+        
+    #else:
+        #print(f"""\nWoah, no way! You and the computer both tied for points!
+        #Your points: {player_score}
+        #Computer's points: {computer_score}
+        #Difference: {player_score - computer_score} """)
+        
