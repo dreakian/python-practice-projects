@@ -1,0 +1,72 @@
+# think about better ways of managing input errors for prompt messages
+
+# figure out how to incorporate a point system
+
+
+
+
+
+game_flag = False
+options = ["rock", "paper", "scissors"]
+player_points = 0
+computer_points = 0
+
+
+import random as r 
+
+
+start_game = input("Do you want to play 'rock, paper, scissors?'(y/n): ")
+
+
+if start_game == "y":
+    game_flag = True
+    game_rounds = int(input("\nHow many rounds do you want to play? Enter a whole number (i.e: 1 or 20): "))
+elif start_game == "n":
+    print("\nThe program has ended.")
+else:
+    print("\nYou didn't enter a valid response. The program has ended.")
+
+def compare_choices():
+    
+    if player_choice != computer_choice:
+        if player_choice == options[0] and computer_choice == options[1] and game_rounds > 0:
+            print(f"\nYou lost. The computer's {computer_choice} beats your {player_choice}.")
+       
+        elif player_choice == options[0] and computer_choice == options[2] and game_rounds > 0:
+            print(f"\nYou won! Your {player_choice} beats the computer's {computer_choice}!")
+         
+            
+        elif player_choice == options[1] and computer_choice == options[2] and game_rounds > 0:
+            print(f"\nYou lost. The computer's {computer_choice} beats your {player_choice}.")
+      
+        elif player_choice == options[1] and computer_choice == options[0] and game_rounds > 0:
+            print(f"\nYou won! Your {player_choice} beats the computer's {computer_choice}!")
+            
+            
+        elif player_choice == options[2] and computer_choice == options[0] and game_rounds > 0:
+            print(f"\nYou lost. The computer's {computer_choice} beats your {player_choice}.")
+            
+        elif player_choice == options[2] and computer_choice == options[1] and game_rounds > 0:
+            print(f"\nYou won! Your {player_choice} beats the computer's {computer_choice}!")        
+            
+    else:
+        print(f"""\nYou tied with the computer!
+        Your choice {player_choice} is the same as the computer's {computer_choice}.""")
+
+
+while game_flag == True:
+
+    for game_length in range(game_rounds):
+        
+        computer_choice = r.choice(options)
+        
+        player_choice = input("\n Make your choice: 'rock', 'paper' or 'scissors': ").lower()
+        
+        compare_choices()
+        
+        game_rounds -= 1
+        
+        print(f"\nRounds left: {game_rounds}")
+        
+        
+        
