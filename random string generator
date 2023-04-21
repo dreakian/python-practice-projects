@@ -1,0 +1,36 @@
+#
+# this project is just a simple random password generator
+#
+# later on, i want to use the time library so that a random code is generated at specific intervals
+#
+# im going to do some research to see what libraries exist that can be used to test the strength (entropy?) of a password or code
+#
+# this might eventually be built into a very rough/basic "random password/code" generator app, so i could also try to use some GUI-based libraries 
+#
+#
+
+
+lower_letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+upper_letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+special_chars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", ">", ">", "'", ",", "|", "/"]
+
+import random as r
+
+random_lower_letter = r.choice(lower_letters)
+
+random_upper_letter = r.choice(upper_letters)
+
+random_number = r.choice(numbers)
+
+random_special_char = r.choice(special_chars)
+
+print(f"""
+First character: {random_lower_letter}
+
+Second character: {random_upper_letter}
+
+Third character: {random_number}
+
+Fourth character: {random_special_char}
+""")
